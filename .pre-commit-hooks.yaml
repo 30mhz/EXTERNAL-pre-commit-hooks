@@ -3,6 +3,7 @@
     description: prevents giant files from being committed.
     entry: check-added-large-files
     language: python
+    stages: [commit, push, manual]
 -   id: check-ast
     name: check python ast
     description: simply checks whether the files parse as valid python.
@@ -163,7 +164,7 @@
     types: [text]
 -   id: name-tests-test
     name: python tests naming
-    description: this verifies that test files are named correctly.
+    description: verifies that test files are named correctly.
     entry: name-tests-test
     language: python
     files: (^|/)tests/.+\.py$

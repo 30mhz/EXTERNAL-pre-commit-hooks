@@ -16,7 +16,7 @@ Add this to your `.pre-commit-config.yaml`
 
 ```yaml
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0  # Use the ref you want to point at
+    rev: v4.3.0  # Use the ref you want to point at
     hooks:
     -   id: trailing-whitespace
     # -   id: ...
@@ -57,6 +57,7 @@ Attempts to load all json files to verify syntax.
 
 #### `check-merge-conflict`
 Check for files that contain merge conflict strings.
+  - `--assume-in-merge` - Allows running the hook when there is no ongoing merge operation
 
 #### `check-shebang-scripts-are-executable`
 Checks that scripts with shebangs are executable.
@@ -141,8 +142,10 @@ Replaces or checks mixed line ending.
       - `no` - Checks if there is any mixed line ending without modifying any file.
 
 #### `name-tests-test`
-Assert that files in tests/ end in `_test.py`.
-  - Use `args: ['--django']` to match `test*.py` instead.
+verifies that test files are named correctly.
+- `--pytest` (the default): ensure tests match `.*_test\.py`
+- `--pytest-test-first`: ensure tests match `test_.*\.py`
+- `--django` / `--unittest`: ensure tests match `test.*\.py`
 
 #### `no-commit-to-branch`
 Protect specific branches from direct checkins.
